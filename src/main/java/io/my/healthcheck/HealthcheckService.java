@@ -22,13 +22,15 @@ public class HealthcheckService {
     public void healthcheck() {
         String gatewayHealthcheck = "/healthcheck";
         String userHealthcheck = "/api/user/healthcheck";
-        String imageHealthcheck = "/api/image/healthcheck";
+        String imageHealthcheck = "/image/healthcheck";
+        String calenderHealthcheck = "/api/calender/healthcheck";
 
         List<Healthcheck> list = new ArrayList<>();
 
         list.add(healthcheck("gateway", gatewayHealthcheck));
         list.add(healthcheck("user", userHealthcheck));
         list.add(healthcheck("image", imageHealthcheck));
+        list.add(healthcheck("calender", calenderHealthcheck));
 
         String lastCheckTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
         responseBody.setList(list);
