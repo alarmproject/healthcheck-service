@@ -11,7 +11,7 @@ public class HealthcheckScheduler {
         this.healthcheckService = healthcheckService;
     }
 
-    @Scheduled(fixedDelay = 1000 * 60 * 2)
+    @Scheduled(fixedDelay = 1000 * 60 * 1)
     public void cronJobSch() {
         healthcheckService.healthcheck();
     }
