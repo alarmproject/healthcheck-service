@@ -27,10 +27,14 @@ public class HealthcheckService {
 
         List<Healthcheck> list = new ArrayList<>();
 
-        list.add(healthcheck("gateway", gatewayHealthcheck));
-        list.add(healthcheck("user", userHealthcheck));
-        list.add(healthcheck("image", imageHealthcheck));
-        list.add(healthcheck("calender", calenderHealthcheck));
+        list.add(healthcheck(true, "dev-gateway", gatewayHealthcheck));
+        list.add(healthcheck(true, "dev-user", userHealthcheck));
+        list.add(healthcheck(true, "dev-image", imageHealthcheck));
+        list.add(healthcheck(true, "dev-calender", calenderHealthcheck));
+        list.add(healthcheck(false, "gateway", gatewayHealthcheck));
+        list.add(healthcheck(false, "user", userHealthcheck));
+        list.add(healthcheck(false, "image", imageHealthcheck));
+        list.add(healthcheck(false, "calender", calenderHealthcheck));
 
         String lastCheckTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
         responseBody.setList(list);
@@ -38,8 +42,17 @@ public class HealthcheckService {
 
     }
 
-    private Healthcheck healthcheck(String service, String healthcheck) {
-        String command = "curl -i --negotiate http://mysend.co.kr:8080";
+    private Healthcheck healthcheck(Boolean isDev, String service, String healthcheck) {
+        if (isDev) {
+            String command = "curl -i --negotiate http://mysend.co.kr:8080";
+            return healthcheck(command, service, healthcheck);
+        } else {
+            String command = "curl -i --negotiate http://43.200.2.249";
+            return healthcheck(command, service, healthcheck);
+        }
+    }
+
+    private Healthcheck healthcheck(String command, String service, String healthcheck) {
         Healthcheck check = new Healthcheck();
 
         try {
