@@ -47,7 +47,7 @@ public class HealthcheckService {
             String command = "curl -i --negotiate http://mysend.co.kr:8080";
             return healthcheck(command, service, healthcheck);
         } else {
-            String command = "curl -i --negotiate http://43.200.2.249:8080";
+            String command = "curl -i --negotiate http://ec2-3-38-153-18.ap-northeast-2.compute.amazonaws.com:8080";
             return healthcheck(command, service, healthcheck);
         }
     }
