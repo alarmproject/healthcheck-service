@@ -31,10 +31,10 @@ public class HealthcheckService {
         list.add(healthcheck(true, "dev-user", userHealthcheck));
         list.add(healthcheck(true, "dev-image", imageHealthcheck));
         list.add(healthcheck(true, "dev-calender", calenderHealthcheck));
-//        list.add(healthcheck(false, "gateway", gatewayHealthcheck));
-//        list.add(healthcheck(false, "user", userHealthcheck));
-//        list.add(healthcheck(false, "image", imageHealthcheck));
-//        list.add(healthcheck(false, "calender", calenderHealthcheck));
+        list.add(healthcheck(false, "gateway", gatewayHealthcheck));
+        list.add(healthcheck(false, "user", userHealthcheck));
+        list.add(healthcheck(false, "image", imageHealthcheck));
+        list.add(healthcheck(false, "calender", calenderHealthcheck));
 
         String lastCheckTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
         responseBody.setList(list);
@@ -47,7 +47,7 @@ public class HealthcheckService {
             String command = "curl -i --negotiate http://mysend.co.kr:8080";
             return healthcheck(command, service, healthcheck);
         } else {
-            String command = "curl -i --negotiate http://ec2-3-38-153-18.ap-northeast-2.compute.amazonaws.com:8080";
+            String command = "curl -i --negotiate http://univercafe.xyz:8080";
             return healthcheck(command, service, healthcheck);
         }
     }
