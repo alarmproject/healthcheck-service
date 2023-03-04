@@ -27,10 +27,10 @@ public class HealthcheckService {
 
         List<Healthcheck> list = new ArrayList<>();
 
-        list.add(healthcheck(true, "dev-gateway", gatewayHealthcheck));
-        list.add(healthcheck(true, "dev-user", userHealthcheck));
-        list.add(healthcheck(true, "dev-image", imageHealthcheck));
-        list.add(healthcheck(true, "dev-calender", calenderHealthcheck));
+//        list.add(healthcheck(true, "dev-gateway", gatewayHealthcheck));
+//        list.add(healthcheck(true, "dev-user", userHealthcheck));
+//        list.add(healthcheck(true, "dev-image", imageHealthcheck));
+//        list.add(healthcheck(true, "dev-calender", calenderHealthcheck));
         list.add(healthcheck(false, "gateway", gatewayHealthcheck));
         list.add(healthcheck(false, "user", userHealthcheck));
         list.add(healthcheck(false, "image", imageHealthcheck));
